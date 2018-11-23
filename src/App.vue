@@ -1,28 +1,59 @@
 <template>
-  <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <div>
+    <top-header :menus="menus"></top-header>
+    <div>
+      <div class="sideBar"></div>
+      <div>
+         <router-view />
+      </div>
+    </div>
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import topHeader from './components/topHeader.vue'
 
 export default {
   name: 'app',
   components: {
-    HelloWorld
+     topHeader
+  },
+  data() {
+     return {
+         menus:[
+            {
+                id: 1,
+                value: '统计信息',
+                icon: 'sum.png',
+                route: '/sum'
+            },
+            {
+                id: 2,
+                value: '基础数据',
+                icon: 'data.png',
+                route: '/basicData'
+            },
+            {
+                id: 3,
+                value: '监控告警',
+                icon: 'watch.png',
+                route: '/watch'
+            },
+            {
+                id: 4,
+                value: '系统管理',
+                icon: 'setting.png',
+                route: '/setting'
+            }
+        ]
+     }
   }
 }
 </script>
 
-<style>
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
+<style lang='less'>
+@import './assets/reset.css';
+@import './assets/tools.css';
+
+
 </style>
